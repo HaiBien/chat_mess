@@ -5,7 +5,6 @@ let router = express.Router();
 
 let initWebRoutes = (app) => {
   router.get("/", HomeController.getHomePage);
-
   router.post('/webhook', HomeController.postWebhook);
   router.get('/webhook', HomeController.getWebhook);
 
