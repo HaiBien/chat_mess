@@ -7,6 +7,7 @@ let initWebRoutes = (app) => {
   router.get("/", HomeController.getHomePage);
   router.post('/webhook', HomeController.postWebhook);
   router.get('/webhook', HomeController.getWebhook);
+  router.get('/fanpages', HomeController.getPageList);
 
   return app.use('/', router);
 }

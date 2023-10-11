@@ -1,11 +1,11 @@
 require('dotenv').config();
 const request = require('request');
+const axios = require('axios');
 
 let getHomePage = (req, res) => {
   console.log('Lê văn hải biên', process.env.VERIFY_TOKEN);
   return res.render("homepage.ejs")
 };
-
 
 let postWebhook = (req, res) => {
   // Parse the request body from the POST
@@ -64,6 +64,17 @@ let getWebhook = (req, res) => {
     }
   }
 };
+
+let getPageList = async (req, res) => {
+  try {
+    const response = await axios.get("https://graph.facebook.com/v12.0/me/accounts?access_token=EAAX5pjnygWMBOZCukZAg1kZBEczaOdwEWSpFQqYdxEA5CaBvltDUHbzyKklP7ZADAnz2DigtltZC5oAQNrUXfLA9isp5zuXZC74NCm2muwDsXVsJkBsUZBxEsB5DNlTvHRDTGeF87PyRZA5pCyVofpb2n65gVgWDs8omJIMXofRcYxl8isfhNe925gGqEIP7M1IJglfhC3Kzx1pgFA6gmhTP38FFqafbZAbCJcSUZD");
+    const fanpages = response.data;
+    res.status(200).json(fanpages)
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ error: 'Không thể lấy danh sách Fanpage.' });
+  }
+}
 
 // Handles messages events
 function handleMessage(sender_psid, received_message) {
@@ -152,10 +163,9 @@ function callSendAPI(sender_psid, response) {
   });
 }
 
-
 module.exports = {
   getHomePage: getHomePage,
   postWebhook: postWebhook,
   getWebhook: getWebhook,
-
+  getPageList: getPageList,
 }
