@@ -1,5 +1,6 @@
 import express from "express";
 import HomeController from "../controllers/HomeController";
+import FBController from "../controllers/FacebookController";
 
 let router = express.Router();
 
@@ -8,6 +9,8 @@ let initWebRoutes = (app) => {
   router.post('/webhook', HomeController.postWebhook);
   router.get('/webhook', HomeController.getWebhook);
   router.get('/fanpages', HomeController.getPageList);
+  router.get('/login', FBController.loginFacebook);
+  router.get('/callback', FBController.facebookCallback);
 
   return app.use('/', router);
 }
