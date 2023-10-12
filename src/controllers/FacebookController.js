@@ -1,6 +1,6 @@
 const request = require('request');
 
-const appId = 'https://chat-mess.onrender.com';
+const appId = '1358287981761652';
 const appSecret = 'e0550036427ecd67f3a82fb157ae34fd';
 const redirectUri = 'https://chat-mess.onrender.com/callback';
 
