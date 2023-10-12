@@ -1,8 +1,8 @@
 const request = require('request');
 
-const appId = '1681867215634787';
-const appSecret = 'd7b87aa867f7ff4febce4867c44c3fef';
-const redirectUri = 'https://owlee-dev.thinklabs.com.vn';
+const appId = 'https://chat-mess.onrender.com';
+const appSecret = 'e0550036427ecd67f3a82fb157ae34fd';
+const redirectUri = 'https://chat-mess.onrender.com/callback';
 
 // Route to initiate the Facebook login
 let loginFacebook = (req, res) => {
