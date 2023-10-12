@@ -2,7 +2,7 @@ const request = require('request');
 
 const appId = '1681867215634787';
 const appSecret = 'd7b87aa867f7ff4febce4867c44c3fef';
-const redirectUri = 'https://owlee-dev.thinklabs.com.vn/';
+const redirectUri = 'https://owlee-dev.thinklabs.com.vn';
 
 // Route to initiate the Facebook login
 let loginFacebook = (req, res) => {
