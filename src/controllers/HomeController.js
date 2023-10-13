@@ -68,7 +68,7 @@ let getWebhook = (req, res) => {
 
 let getPageList = async (req, res) => {
   try {
-    const response = await axios.get("https://graph.facebook.com/v12.0/me/accounts?access_token=EAAX5pjnygWMBOZCukZAg1kZBEczaOdwEWSpFQqYdxEA5CaBvltDUHbzyKklP7ZADAnz2DigtltZC5oAQNrUXfLA9isp5zuXZC74NCm2muwDsXVsJkBsUZBxEsB5DNlTvHRDTGeF87PyRZA5pCyVofpb2n65gVgWDs8omJIMXofRcYxl8isfhNe925gGqEIP7M1IJglfhC3Kzx1pgFA6gmhTP38FFqafbZAbCJcSUZD");
+    const response = await axios.get("https://graph.facebook.com/v12.0/me/accounts?access_token=EAATTWxCn1HQBO3C6sX5FV8zMcPWaAqeI3hBzWznlwJMNbS5bhYtNZBQ0dWlLAYyG0NoxRCZBOYMKLeJRpZCR28PMrFb9OiL0uGjL9Fihu8zZBWjrCtsZBGmez8vETXgn7ZACKLBhPCPLlFdXdhu1MOHleUYZBjJGkuaADjgmTZAKVwZAPIXZAZAdiPtw6IEX4ZBttcxO3IHO2tPuD0MjHCQaTIZBfke08oCoZD");
     const fanpages = response.data;
     res.status(200).json(fanpages)
   } catch (error) {
