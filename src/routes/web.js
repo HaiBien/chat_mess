@@ -1,6 +1,7 @@
 import express from "express";
 import HomeController from "../controllers/HomeController";
 import FBController from "../controllers/FacebookController";
+import FbController from "../controllers/FbController";
 
 let router = express.Router();
 
