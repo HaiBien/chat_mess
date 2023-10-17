@@ -2,7 +2,7 @@ import express from "express";
 import bodyParser from "body-parser";
 import viewEngine from "./configs/viewEngine";
 import webRoutes from "./routes/web";
-const bot = require('./controllers/telegram');
+import createBot from "./controllers/TelegramBot"
 import TelegramBotController from "./controllers/TelegramBot";
 
 
@@ -15,7 +15,7 @@ viewEngine(app);
 
 webRoutes(app);
 
-bot.on('message', TelegramBotController.handleMessage);
+createBot();
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
