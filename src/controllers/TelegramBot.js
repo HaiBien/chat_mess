@@ -1,30 +1,19 @@
-const TelegramBot = require('node-telegram-bot-api');
+const bot = require('./telegram');
 
-// Danh sách các mã token của 10 bot
-const botTokens = [
-  '5542480069:AAHpM5-gQTRCK6CmjcgPHxUUAar7evVM7t8',
-  '6416678009:AAHD9osqmlYT0oPcLbkUAVKvvYi9896ka6o',
-  "6424840137:AAEkUtAf86nVPrseHCuWwYJ2y4C7FIAQUQI"
-];
+async function handleMessage(msg) {
+  const chatId = msg.chat.id;
 
-let createBot = () => {
-  const bots = botTokens.map((token) => {
-    return new TelegramBot(token, { polling: true });
-  });
+  console.log('msg', msg)
 
-  // Bắt sự kiện khi mỗi bot nhận được tin nhắn
-  bots.forEach((bot) => {
-    bot.on('message', (msg) => {
-      const chatId = msg.chat.id;
-      const inputText = msg.text;
-      if (inputText === '/start') {
-        bot.sendMessage(chatId, `Xin chào!`);
-      } else {
-        const putputText = "Bạn vừa nhắn " + inputText
-        bot.sendMessage(chatId, putputText);
-      }
-    });
-  });
+  const inputText = msg.text;
+  if (inputText) {
+    console.log('telegram bot: ' + inputText)
+    // Xử lý tin nhắn từ người dùng ở đây và trả lời lại (nếu cần).
+    const outputText = 'Bạn vừa gửi: ' + inputText
+    bot.sendMessage(chatId, outputText);
+  }
+
 }
-
-module.exports = createBot;
+module.exports = {
+  handleMessage,
+};
