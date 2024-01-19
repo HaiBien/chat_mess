@@ -1,14 +1,14 @@
 import express from "express";
-import HomeController from "../controllers/HomeController";
+import FacebookCtrl from "../controllers/FacebookCtrl";
 import TelegramCtrl from "../controllers/TelegramCtrl";
 
 let router = express.Router();
 
 let initWebRoutes = (app) => {
-  router.get("/", HomeController.getHomePage);
+  router.get("/", FacebookCtrl.getHomePage);
   router.post('/telegram/webhook', TelegramCtrl.telegramWebhook);
-  router.get("/webhook", HomeController.getWebhook);
-  router.post('/webhook', HomeController.postWebhook);
+  router.get("/webhook", FacebookCtrl.getWebhook);
+  router.post('/webhook', FacebookCtrl.postWebhook);
 
   return app.use('/', router);
 }
