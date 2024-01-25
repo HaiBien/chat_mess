@@ -7,7 +7,7 @@ let router = express.Router();
 let initWebRoutes = (app) => {
   router.get("/", FacebookCtrl.getHomePage);
   router.post('/telegram/webhook', TelegramCtrl.telegramWebhook);
-  router.get("/webhook", FacebookCtrl.getWebhook);
+  router.get("/get-webhook", FacebookCtrl.getWebhook);
   router.post('/webhook', FacebookCtrl.postWebhook);
 
   return app.use('/', router);

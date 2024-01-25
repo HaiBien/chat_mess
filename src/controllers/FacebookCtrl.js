@@ -10,6 +10,8 @@ let getHomePage = (req, res) => {
 let getWebhook = (req, res) => {
   let VERIFY_TOKEN = process.env.VERIFY_TOKEN
   // Parse the query params
+  let data = req.query
+  console.log('datadatadatadata', data)
   let mode = req.query["hub.mode"];
   let token = req.query["hub.verify_token"];
   let challenge = req.query["hub.challenge"];
@@ -67,19 +69,6 @@ let postWebhook = (req, res) => {
 
 
 
-
-let getPageList = async (req, res) => {
-  try {
-    const { token } = req.query
-    const response = await axios.get(`https://graph.facebook.com/v18.0/me/accounts?access_token=${token}`);
-    const fanpages = response.data;
-    res.status(200).json(fanpages)
-  } catch (error) {
-    console.error(error);
-    res.status(500).json({ error: 'Không thể lấy danh sách Fanpage.' });
-  }
-}
-
 // Handles messages events
 function handleMessage(sender_psid, received_message) {
   let response;
@@ -134,6 +123,21 @@ function callSendAPI(sender_psid, response) {
       console.error("Unable to send message:" + err);
     }
   });
+}
+
+
+
+
+let getPageList = async (req, res) => {
+  try {
+    const { token } = req.query
+    const response = await axios.get(`https://graph.facebook.com/v18.0/me/accounts?access_token=${token}`);
+    const fanpages = response.data;
+    res.status(200).json(fanpages)
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ error: 'Không thể lấy danh sách Fanpage.' });
+  }
 }
 
 module.exports = {
