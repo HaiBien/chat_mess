@@ -8,6 +8,7 @@ let getHomePage = (req, res) => {
 };
 
 let getWebhook = (req, res) => {
+  console.log('getWebhook')
   let VERIFY_TOKEN = process.env.VERIFY_TOKEN
   // Parse the query params
   let data = req.query
@@ -31,6 +32,7 @@ let getWebhook = (req, res) => {
 };
 
 let postWebhook = (req, res) => {
+  console.log('postWebhook')
   // Parse the request body from the POST
   let body = req.body;
 
