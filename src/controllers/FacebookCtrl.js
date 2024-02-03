@@ -44,13 +44,12 @@ let postWebhook = (req, res) => {
 
       // Gets the body of the webhook event
       let webhook_event = entry.messaging[0];
-      console.log('webhook_event', webhook_event);
       // Get the sender PSID
       let sender_psid = webhook_event.sender.id;
       let page_id = webhook_event.sender.id;
-      console.log('Sender PSID: ' + sender_psid);
-      console.log('recipient:', webhook_event)
-      console.log('Trà sữa Wigo: 220566801136562')
+      console.log('SenderPSID: ', sender_psid);
+      console.log('PageId: ', page_id);
+      console.log('Message', webhook_event?.message?.text)
       // Check if the event is a message or postback and
       // pass the event to the appropriate handler function
       if (webhook_event.message) {
