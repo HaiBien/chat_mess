@@ -55,7 +55,7 @@ let postWebhook = (req, res) => {
       if (webhook_event.message) {
         handleMessage(sender_psid, webhook_event.message);
       } else if (webhook_event.postback) {
-        handlePostback(sender_psid, webhook_event.postback);
+
       }
 
     });
@@ -73,7 +73,7 @@ let postWebhook = (req, res) => {
 // Handles messages events
 function handleMessage(sender_psid, received_message) {
   let response;
-
+  console.log('handleMessage: function')
   if (received_message.text) {
     response = {
       "text": `You sent the message: "${received_message.text}"!`
@@ -83,34 +83,12 @@ function handleMessage(sender_psid, received_message) {
   callSendAPI(sender_psid, response);
 }
 
-// Handles messaging_postbacks events
-function handlePostback(sender_psid, received_postback) {
-  let response;
-
-  // Get the payload for the postback
-  let payload = received_postback.payload;
-
-  // Set the response based on the postback payload
-  if (payload === 'yes') {
-    response = { "text": "Thanks!" }
-  } else if (payload === 'no') {
-    response = { "text": "Oops, try sending another image." }
-  }
-  // Send the message to acknowledge the postback
-  callSendAPI(sender_psid, response);
-}
 
 // Sends response messages via the Send API
 function callSendAPI(sender_psid, response) {
-  console.log('sender_psid:', sender_psid)
+  console.log('CallSendAPI: : function ', sender_psid)
   // Construct the message body
-  let request_body = {
-    "recipient": {
-      "id": sender_psid
-    },
-    "message": response
-  }
-
+  let request_body = { "recipient": { "id": sender_psid }, "message": response }
   // Send the HTTP request to the Messenger Platform
   request({
     "uri": "https://graph.facebook.com/v18.0/me/messages",
