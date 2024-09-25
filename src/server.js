@@ -2,9 +2,10 @@ import express from "express";
 import bodyParser from "body-parser";
 import viewEngine from "./configs/viewEngine";
 import webRoutes from "./routes/web";
+const cors = require('cors');
 
 let app = express();
-
+app.use(cors());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
